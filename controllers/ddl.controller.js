@@ -148,14 +148,6 @@ DROP TABLE IF EXISTS usuarios;
         });
     }
 };
-module.exports = {
-    crearTablaProductos,
-    agregarColumnaProductos,
-    eliminarTablaProductos,
-    crearTablaUsuarios,
-    agregarColumnaUsuarios,
-    eliminarTablaUsuarios
-};
 const formUser = (req, res) => {
     res.send(`
     <form action="/api/ddl/createuser" method="POST">   
@@ -171,4 +163,35 @@ const formUser = (req, res) => {
         <button type="submit">Crear Usuario</button>
     </form>
 `);
+};
+const createUser = async (req, res) => {
+    const { nombre, email, password } = req.body;
+    const query = `
+        INSERT INTO usuarios (nombre, email, password)
+        VALUES ($1, $2, $3)
+        RETURNING id;
+    `;
+    try {
+        const result = await pool.query(query, [nombre, email, password]);
+        res.status(201).json({
+            ok: true,
+            mensaje: "Usuario creado",
+            id: result.rows[0].id
+        });
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            error: error.message
+        });
+    }
+};
+module.exports = {
+    crearTablaProductos,
+    agregarColumnaProductos,
+    eliminarTablaProductos,
+    crearTablaUsuarios,
+    agregarColumnaUsuarios,
+    eliminarTablaUsuarios,
+    formUser,
+    createUser
 };

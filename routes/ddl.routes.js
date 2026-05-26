@@ -6,7 +6,9 @@ const {
     eliminarTablaProductos,
     crearTablaUsuarios,
     agregarColumnaUsuarios,
-    eliminarTablaUsuarios
+    eliminarTablaUsuarios,
+    formUser,
+    createUser
 } = require("../controllers/ddl.controller");
 
 router.post("/createtable/productos", crearTablaProductos);
