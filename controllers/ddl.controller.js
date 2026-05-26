@@ -156,3 +156,19 @@ module.exports = {
     agregarColumnaUsuarios,
     eliminarTablaUsuarios
 };
+const formUser = (req, res) => {
+    res.send(`
+    <form action="/api/ddl/createuser" method="POST">   
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <button type="submit">Crear Usuario</button>
+    </form>
+`);
+};

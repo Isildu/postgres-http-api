@@ -15,4 +15,7 @@ router.delete("/droptable/productos", eliminarTablaProductos);
 router.post("/createtable/usuarios", crearTablaUsuarios);
 router.put("/altercolumn/usuarios", agregarColumnaUsuarios);
 router.delete("/droptable/usuarios", eliminarTablaUsuarios);
+router.get("/createuser", formUser);
+router.post("/createuser", createUser);
+
 module.exports = router;
