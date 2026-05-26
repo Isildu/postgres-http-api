@@ -1,11 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const {
-crearTabla,
-agregarColumna,
-eliminarTabla
+    crearTablaProductos,
+    agregarColumnaProductos,
+    eliminarTablaProductos,
+    crearTablaUsuarios,
+    agregarColumnaUsuarios,
+    eliminarTablaUsuarios
 } = require("../controllers/ddl.controller");
-router.post("/create", crearTabla);
-router.put("/alter", agregarColumna);
-router.delete("/drop", eliminarTabla);
+
+router.post("/createtable/productos", crearTablaProductos);
+router.put("/altercolumn/productos", agregarColumnaProductos);
+router.delete("/droptable/productos", eliminarTablaProductos);
+router.post("/createtable/usuarios", crearTablaUsuarios);
+router.put("/altercolumn/usuarios", agregarColumnaUsuarios);
+router.delete("/droptable/usuarios", eliminarTablaUsuarios);
 module.exports = router;
