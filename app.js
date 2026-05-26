@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const ddlRoutes = require("./routes/ddl.routes");
 app.use("/api/ddl", ddlRoutes);
 

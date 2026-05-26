@@ -185,6 +185,23 @@ const createUser = async (req, res) => {
         });
     }
 };
+const listaUsers = async (req, res) => {
+    const query = `
+        SELECT id, nombre, email FROM usuarios;
+    `;
+    try {
+        const result = await pool.query(query);
+        res.status(200).json({
+            ok: true,
+            usuarios: result.rows
+        });
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            error: error.message
+        });
+    }
+};
 module.exports = {
     crearTablaProductos,
     agregarColumnaProductos,
@@ -193,5 +210,7 @@ module.exports = {
     agregarColumnaUsuarios,
     eliminarTablaUsuarios,
     formUser,
-    createUser
+    createUser,
+    listaUsers
 };
+

@@ -8,7 +8,8 @@ const {
     agregarColumnaUsuarios,
     eliminarTablaUsuarios,
     formUser,
-    createUser
+    createUser, 
+    listaUsers
 } = require("../controllers/ddl.controller");
 
 router.post("/createtable/productos", crearTablaProductos);
@@ -19,5 +20,6 @@ router.put("/altercolumn/usuarios", agregarColumnaUsuarios);
 router.delete("/droptable/usuarios", eliminarTablaUsuarios);
 router.get("/createuser", formUser);
 router.post("/createuser", createUser);
+router.get("/listusers", listaUsers);
 
 module.exports = router;
